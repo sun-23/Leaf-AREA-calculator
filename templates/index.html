@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>Plants Area Calculator</title>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+
+<body>
+   <nav class="navbar navbar-dark bg-dark ">
+      <a class="navbar-brand navbar-center" href="#">Plants Area Calculator</a>
+   </nav>
+
+   <div class="container">
+      <div class="starter-template">
+         <h3> </h3>
+         <h2>Plants Area Calculator</h2>
+         <p>Upload an image</p>
+         <p>Max Image Size: 2 MB</p>
+      </div>
+   </div>
+
+   <div class="container">
+      <form method=post enctype=multipart/form-data>
+        <strong>Files: </strong>
+        <input type=file name=file onchange="loadFile(event)">
+        <strong>scan with paper size: </strong>
+        <select name="scanner" id="scanner">
+            <option value="A6">A6</option>
+            <option value="A5">A5</option>
+            <option value="A4" selected="selected">A4</option>
+            <option value="A3">A3</option>
+            <option value="A2">A2</option>
+            <option value="A1">A1</option>
+        </select>
+        <input type=submit value=Upload class="btn btn-primary">
+      </form>
+      <img id="output" alt="" width="40%" height="40%" />
+   </div>
+
+   {% if data %}
+   <div class="container">
+      <p>Area is {{ data.area }} cm^2</p>
+      <img src="{{ data.processed_img }}" alt="" width="480px" height="684px">
+      <img src="{{ data.uploaded_img }}" alt="" width="480px" height="684px">   
+   </div>
+   {% endif %}
+
+
+   <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+</body>
+
+</html>
