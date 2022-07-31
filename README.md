@@ -15,5 +15,5 @@ heroku logs --tail --app leaf-area-calculator
 git add .
 git status
 git commit -m "message"
-git push
+git push origin main
 ```
